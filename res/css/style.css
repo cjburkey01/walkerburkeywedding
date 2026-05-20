@@ -3,9 +3,33 @@
 /* Whole body shit */
 
 :root {
-    --title-color: #b1a99d;
     --background-color: #231f20;
-    --normal-text-color: white;
+    --normal-text-color: #b1a99d;
+
+    /* This is not so fun */
+    @media (width <= 400px) {
+        --name-title-size: 8cqw;
+    }
+    @media (width > 400px) {
+        --name-title-size: 7cqw;
+    }
+
+    @media (width <= 400px) {
+        --date-place-title-size: 3.5cqw;
+    }
+    @media (width > 400px) {
+        --date-place-title-size: 3cqw;
+    }
+
+    @media (width <= 400px) {
+        --normal-header-size: 1.9em;
+    }
+    @media (400px < width <= 800px) {
+        --normal-header-size: 2.3em;
+    }
+    @media (width > 800px) {
+        --normal-header-size: 2.8em;
+    }
 }
 
 html {
@@ -39,8 +63,8 @@ body {
 }
 
 #name-title {
-    color: var(--title-color);
-    font-size: 7cqw;
+    color: var(--normal-text-color);
+    font-size: var(--name-title-size);
     font-family: "Pinyon Script", cursive;
 
     margin-top: auto;
@@ -48,8 +72,8 @@ body {
 }
 
 #date-location-title {
-    color: var(--title-color);
-    font-size: 3cqw;
+    color: var(--normal-text-color);
+    font-size: var(--date-place-title-size);
 
     margin-bottom: 0.5em;
 }
@@ -59,14 +83,17 @@ body {
     display: grid;
     grid-template-columns: 1fr 1.5em 1fr;
 
-    span:nth-child(1) {
-        text-align: right;
-    }
-    span:nth-child(2) {
-        text-align: center;
-    }
-    span:nth-child(3) {
-        text-align: left;
+    /* Set each child (span elem) to align towards the center */
+    span {
+        &:nth-child(1) {
+            text-align: right;
+        }
+        &:nth-child(2) {
+            text-align: center;
+        }
+        &:nth-child(3) {
+            text-align: left;
+        }
     }
 }
 
@@ -76,14 +103,29 @@ body {
     flex-grow: 1;
     width: 75%;
     align-self: center;
+    margin: 2em;
+
+    /* Nested rules rock */
+    section {
+        text-align: center;
+
+        h1 {
+            color: var(--normal-text-color);
+            font-size: var(--normal-header-size);
+            margin: 0;
+        }
+        /* Bottom border on all but last section to create separators */
+        &:nth-last-child(n + 2) {
+            padding-bottom: 2em;
+            border-bottom: 1px solid var(--normal-text-color);
+        }
+    }
 }
 
-#content-flex-elem section:nth-last-child(n + 2) {
-    border-bottom: 1px solid var(--title-color);
-}
-
-#content-flex-elem section h1 {
-    color: var(--title-color);
+#content-schedule {
+    h3 {
+        margin-bottom: 0.25em;
+    }
 }
 
 /* Footer shit */
