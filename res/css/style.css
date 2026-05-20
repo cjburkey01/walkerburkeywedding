@@ -24,7 +24,7 @@
     @media (width <= 400px) {
         --normal-header-size: 1.9em;
     }
-    @media (400px < width <= 800px) {
+    @media (width > 400px) and (width <= 800px) {
         --normal-header-size: 2.3em;
     }
     @media (width > 800px) {
@@ -118,6 +118,10 @@ body {
         &:nth-last-child(n + 2) {
             padding-bottom: 2em;
             border-bottom: 1px solid var(--normal-text-color);
+        }
+        /* Top margin on all but first section to keep spacing even */
+        &:nth-child(n + 2) {
+            margin-top: 1.5em;
         }
     }
 }
