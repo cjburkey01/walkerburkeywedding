@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&family=EB+Garamond&display=swap");
+
+/* Whole body shit */
+
+:root {
+    --title-color: #b1a99d;
+    --background-color: #231f20;
+    --normal-text-color: white;
+}
+
+html {
+    min-height: 100dvh;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    color: var(--normal-text-color);
+    min-height: 100dvh;
+    padding: 0;
+    margin: 0;
+
+    font-family: "EB Garamond", serif;
+}
+
+/* Header shit */
+
+#header-flex-elem {
+    background-image: url("../img/header.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 2650/1085;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#name-title {
+    color: var(--title-color);
+    font-size: 7cqw;
+    font-family: "Pinyon Script", cursive;
+
+    margin-top: auto;
+    margin-bottom: 0.5%;
+}
+
+#date-location-title {
+    color: var(--title-color);
+    font-size: 3cqw;
+
+    margin-bottom: 0.5em;
+}
+
+.split-centered-title {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.5em 1fr;
+
+    span:nth-child(1) {
+        text-align: right;
+    }
+    span:nth-child(2) {
+        text-align: center;
+    }
+    span:nth-child(3) {
+        text-align: left;
+    }
+}
+
+/* Main content shit */
+
+#content-flex-elem {
+    flex-grow: 1;
+    width: 75%;
+    align-self: center;
+}
+
+#content-flex-elem section:nth-last-child(n + 2) {
+    border-bottom: 1px solid var(--title-color);
+}
+
+#content-flex-elem section h1 {
+    color: var(--title-color);
+}
+
+/* Footer shit */
+
+#footer-flex-elem {
+    background-image: url("../img/footer.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 2650/600;
+}
