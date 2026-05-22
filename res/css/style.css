@@ -3,10 +3,12 @@
 /* Whole body shit */
 
 :root {
+    font-family: "EB Garamond", serif;
+
     --background-color: #231f20;
     --normal-text-color: #b1a99d;
 
-    /* This is not so fun */
+    /* Media queries not so fun */
     @media (width <= 400px) {
         --name-title-size: 8cqw;
     }
@@ -33,6 +35,12 @@
 }
 
 html {
+    /*
+        Gotta make sure footer makes it to the bottom of the page.
+        I guess it's less important since we only have this single page, which
+        should never be smaller than the screen. I suppose if someone uses a
+        super tall monitor, we'll have that covered though!
+    */
     min-height: 100dvh;
     padding: 0;
     margin: 0;
@@ -46,8 +54,6 @@ body {
     min-height: 100dvh;
     padding: 0;
     margin: 0;
-
-    font-family: "EB Garamond", serif;
 }
 
 /* Header shit */
