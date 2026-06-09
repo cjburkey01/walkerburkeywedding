@@ -1,40 +1,70 @@
-/* Whole body shit */
+/* -- Whole body shit -- */
 
 :root {
+    /* -- Variables -- */
+
+    --background-color: #231f20;
+    --normal-text-color: #b1a99d;
+    --normal-font-size: 1.2rem;
+
+    /* Small display */
+    @media (width < 400px) {
+        --name-title-size: 7.5cqw;
+        --date-place-title-size: 3.5cqw;
+        --h1-size: 2rem;
+    }
+    /* Medium Display */
+    @media (width >= 400px) {
+        --name-title-size: 7cqw;
+        --date-place-title-size: 3cqw;
+    }
+    @media (400px <= width < 800px) {
+        --h1-size: 2.5rem;
+    }
+    /* Large Display */
+    @media (800px <= width < 1200px) {
+        --h1-size: 3.5rem;
+    }
+    /* Largest Display */
+    @media (width >= 1200px) {
+        --h1-size: 4rem;
+    }
+    --h2-size: calc(var(--h1-size) * 0.65);
+    --h3-size: calc(var(--h2-size) * 0.75);
+
+    /* Default font */
     font-family: "EB Garamond", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    font-size: 1rem;
+    color: var(--normal-text-color);
+}
 
-    --background-color: #231f20;
-    --normal-text-color: #b1a99d;
+h1 {
+    font-size: var(--h1-size);
+    margin: 0;
+    font-variant: small-caps;
+}
+h2 {
+    font-size: var(--h2-size);
+    margin: 0;
+}
+h3 {
+    font-size: var(--h3-size);
+    margin: 0;
+}
+p,
+address {
+    font-size: var(--normal-font-size);
+}
 
-    /* Media queries not so fun */
-    @media (width <= 400px) {
-        --name-title-size: 8cqw;
+.contained {
+    @media (width <= 1000px) {
+        width: 75%;
     }
-    @media (width > 400px) {
-        --name-title-size: 7cqw;
-    }
-
-    @media (width <= 400px) {
-        --date-place-title-size: 3.5cqw;
-    }
-    @media (width > 400px) {
-        --date-place-title-size: 3cqw;
-    }
-
-    @media (width <= 400px) {
-        --normal-header-size: 1.9em;
-    }
-    @media (width > 400px) and (width <= 800px) {
-        --normal-header-size: 2.3em;
-    }
-    @media (width > 800px) and (width <= 1200px) {
-        --normal-header-size: 2.8em;
-    }
-    @media (width > 1200px) {
-        --normal-header-size: 3.1em;
+    @media (width > 1000px) {
+        width: 50%;
     }
 }
 
@@ -54,7 +84,6 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--background-color);
-    color: var(--normal-text-color);
     min-height: 100dvh;
     padding: 0;
     margin: 0;
@@ -73,7 +102,6 @@ body {
 }
 
 #name-title {
-    color: var(--normal-text-color);
     font-size: var(--name-title-size);
     font-family: "Pinyon Script", cursive;
     font-weight: 400;
@@ -84,10 +112,9 @@ body {
 }
 
 #date-location-title {
-    color: var(--normal-text-color);
     font-size: var(--date-place-title-size);
 
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
 }
 
 .split-centered-title {
@@ -111,94 +138,120 @@ body {
 
 /* Main content shit */
 
+section h1 {
+    margin-bottom: 1rem;
+}
+
 #content-flex-elem {
     flex-grow: 1;
     width: 75%;
     align-self: center;
-    margin: 2em;
+    margin: 2rem;
 
     /* Nested rules rock */
     section {
         text-align: center;
 
-        h1 {
-            color: var(--normal-text-color);
-            font-size: var(--normal-header-size);
-            margin: 0;
-        }
         /* Bottom border on all but last section to create separators */
         &:nth-last-child(n + 2) {
-            padding-bottom: 2em;
+            padding-bottom: 2rem;
             border-bottom: 1px solid var(--normal-text-color);
+        }
+        /* Top border on first element */
+        &:nth-child(1) {
+            padding-top: 1rem;
+            border-top: 1px solid var(--normal-text-color);
         }
         /* Top margin on all but first section to keep spacing even */
         &:nth-child(n + 2) {
-            margin-top: 1.5em;
+            margin-top: 1.5rem;
         }
     }
 }
 
 #content-schedule {
-    h3 {
-        margin-bottom: 0.25em;
-        font-size: 1.3em;
+    h2 {
+        padding-top: 0.5rem;
+        margin-bottom: 0.75rem;
     }
 
-    #schedule-address {
-        font-size: 1.2em;
+    h3 {
+        margin-bottom: 0.25rem;
     }
 }
 
-#content-qna {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#content-story .contained {
+    text-align: left;
+    margin: auto;
+    p {
+        text-indent: 1rem;
+        line-height: 1.75rem;
+    }
+    /* Prevent superscript from raising some lines' heights */
+    sup {
+        vertical-align: baseline;
+        position: relative;
+        bottom: 0.33rem;
+    }
+}
 
-    #questions {
-        margin-top: 1em;
+#content-travel .contained {
+    text-align: left;
+    margin: auto;
+}
 
-        @media (width <= 1000px) {
-            width: 75%;
-        }
-        @media (width > 1000px) {
-            width: 50%;
-        }
+#content-qna #questions {
+    margin: auto;
+    margin-top: 1rem;
 
-        text-align: left;
+    text-align: left;
 
-        details {
-            font-size: 1.15em;
-            summary {
-                font-size: 1.35em;
+    h2 {
+        margin-bottom: 1rem;
+    }
 
-                list-style-type: none;
-                &::-webkit-details-marker {
-                    display: none;
-                }
-                &::before {
-                    content: "";
-                    margin-right: 0.5em;
-                    display: inline-block;
-                    width: 1rem;
-                    height: 1rem;
-                    border-radius: 0.5rem;
-                    background-color: var(--normal-text-color);
-                    /*
+    details {
+        font-size: 1.15rem;
+        border: 1px solid var(--normal-text-color);
+        border-radius: 0.5rem;
+
+        summary {
+            font-size: 1.35rem;
+            padding: 2rem;
+
+            list-style-type: none;
+            &::-webkit-details-marker {
+                display: none;
+            }
+            &::before {
+                content: "";
+                margin-right: 0.5rem;
+                display: inline-block;
+                width: 1rem;
+                height: 1rem;
+                border-radius: 0.5rem;
+                background-color: var(--normal-text-color);
+                /*
                         Stolen from Bootstrap
                         https://icons.getbootstrap.com/icons/chevron-double-right/
                         (Stored at res/img/chevron-double-right.svg but unused)
                     */
-                    mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-double-right%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M3.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L9.293%208%203.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M7.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L13.293%208%207.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%3C%2Fsvg%3E");
+                mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-double-right%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M3.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L9.293%208%203.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M7.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L13.293%208%207.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%3C%2Fsvg%3E");
 
-                    transition: transform 0.3s;
-                }
+                transition: transform 0.3s;
             }
-            &[open] summary::before {
+        }
+        &[open] summary {
+            padding-bottom: 1rem;
+            &::before {
                 transform: rotate(90deg);
             }
-            &:nth-last-child(n + 2) {
-                margin-bottom: 1em;
-            }
+        }
+        &[open]::details-content {
+            padding: 0 2rem 1rem 2rem;
+        }
+        &:nth-last-child(n + 2) {
+            margin-bottom: 1rem;
         }
     }
 }
