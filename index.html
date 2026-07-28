@@ -69,6 +69,38 @@
                     <p>&approx; 5:30</p><p>Reception</p>
                 </div>
             </section>
+            <section id="content-rsvp">
+                <h1>RSVP</h1>
+                <div class="contained">
+                    <p>
+                        Tap/click the button below to enter the RSVP code that was
+                        written inside your invitation later.
+                    </p>
+                    <p>
+                        If you didn&apos;t receive a letter, the RSVP code is
+                        missing, this website isn&apos;t working correctly, or
+                        you just prefer not to do it online, feel free to
+                        call/text CJ or Jade directly. Thank you!
+                    </p>
+                    <button id="open-rsvp-button">RSVP Here!</button>
+                </div>
+                <dialog id="rsvp-dialog" closedby="any">
+                    <h1>RSVP</h1>
+                    <p>Bippitty Boopitty Submit Your Preferencitties</p>
+                    <div id="rsvp-dialog-content">
+                        <!-- TODO: HANDLE THIS -->
+                        <form style="display: flex; flex-direction: column; gap: 1rem">
+                            <input type="text"
+                                   inputmode="numeric"
+                                   pattern="[0-9]*"
+                                   maxlength="6"
+                                   name="group-id"
+                                   placeholder="RSVP Code" />
+                            <button type="submit">Enter</button>
+                        </form>
+                    </div>
+                </dialog>
+            </section>
             <section id="content-story">
                 <h1>Our Story</h1>
                 <div class="contained">
@@ -151,5 +183,14 @@
             </section>
         </main>
         <footer id="footer-flex-elem"></footer>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const rsvpButton = document.getElementById("open-rsvp-button");
+            const rsvpDialog = document.getElementById("rsvp-dialog");
+
+            rsvpButton.addEventListener("click", () => rsvpDialog.showModal());
+          });
+        </script>
     </body>
 </html>

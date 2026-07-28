@@ -58,6 +58,25 @@ p,
 address {
     font-size: var(--normal-font-size);
 }
+button {
+    border: none;
+    background-color: #671328;
+    color: white;
+    padding: 1.0rem;
+    cursor: pointer;
+
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: calc(var(--normal-font-size) * 1.5);
+}
+input[type="text"] {
+    padding: 0.3rem;
+}
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.6); /* 60% opacity black */
+}
 
 .contained {
     @media (width <= 1000px) {
@@ -197,6 +216,15 @@ section h1 {
                 text-align: left;
             }
         }
+    }
+}
+
+#content-rsvp .contained {
+    text-align: left;
+    margin: auto;
+
+    button {
+        width: 100%;
     }
 }
 
