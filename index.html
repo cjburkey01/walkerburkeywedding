@@ -89,13 +89,36 @@
                     <p>Bippitty Boopitty Submit Your Preferencitties</p>
                     <div id="rsvp-dialog-content">
                         <!-- TODO: HANDLE THIS -->
-                        <form style="display: flex; flex-direction: column; gap: 1rem">
+
+                        <!--
+                        <form name="group-id-entry">
                             <input type="text"
                                    inputmode="numeric"
                                    pattern="[0-9]*"
                                    maxlength="6"
                                    name="group-id"
                                    placeholder="RSVP Code" />
+                            <button type="submit">Enter</button>
+                        </form>
+                        -->
+
+                        <form name="rsvp-selection">
+                            <div class="rsvp-selection-person">
+                                <p>Person 1</p>
+                                <div>
+                                    <input title="Yes!" type="radio" name="person-1-rsvp" value="yes" />
+                                    <input title="Maybe" type="radio" name="person-1-rsvp" value="maybe" />
+                                    <input title="I Can&apos;t" type="radio" name="person-1-rsvp" value="no" />
+                                </div>
+                            </div>
+                            <div class="rsvp-selection-person">
+                                <p>Person 2</p>
+                                <div>
+                                    <input title="Yes!" type="radio" name="person-2-rsvp" value="yes" />
+                                    <input title="Maybe" type="radio" name="person-2-rsvp" value="maybe" />
+                                    <input title="I Can&apos;t" type="radio" name="person-2-rsvp" value="no" />
+                                </div>
+                            </div>
                             <button type="submit">Enter</button>
                         </form>
                     </div>
