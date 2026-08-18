@@ -255,7 +255,8 @@ section h1 {
             grid-template-columns:
             repeat(3, 1fr);
             align-self: center;
-            gap: 0.2rem;
+
+            --rsvp-option-corner-radius: 1rem;
 
             input[type="radio"] {
                 -webkit-appearance: none;
@@ -265,7 +266,7 @@ section h1 {
 
                 width: 100%;
                 aspect-ratio: 1/1;
-                border-radius: 1.0rem;
+                /*border-radius: 1.0rem;*/
 
                 position: relative;
                 background-color: var(--button-normal-color);
@@ -284,20 +285,26 @@ section h1 {
                     z-index: 1;
                 }
 
-                &:nth-child(1)::before{
-                    background: url('../img/thumbs-up-svgrepo-com.svg');
-                    background-repeat: no-repeat;
-                    background-size: contain;
+                &:nth-child(1) {
+                    border-radius: var(--rsvp-option-corner-radius) 0 0 var(--rsvp-option-corner-radius);
+                    &::before {
+                        background: url('../img/thumbs-up-svgrepo-com.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
                 }
                 &:nth-child(2)::before{
                     background: url('../img/indifferent-unsure-shrug-irresponsible-svgrepo-com.svg');
                     background-repeat: no-repeat;
                     background-size: contain;
                 }
-                &:nth-child(3)::before{
-                    background: url('../img/thumbs-down-svgrepo-com.svg');
-                    background-repeat: no-repeat;
-                    background-size: contain;
+                &:nth-child(3){
+                    border-radius: 0 var(--rsvp-option-corner-radius) var(--rsvp-option-corner-radius) 0;
+                    &::before {
+                        background: url('../img/thumbs-down-svgrepo-com.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
                 }
             }
         }
